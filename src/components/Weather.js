@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-
+import cloudy from '/Users/maka/personal_projects/travel_frontend/src/icons/cloudy.png'
+import rain from '/Users/maka/personal_projects/travel_frontend/src/icons/rain.png'
+import sunny from '/Users/maka/personal_projects/travel_frontend/src/icons/sunny.png'
+import Wind from '/Users/maka/personal_projects/travel_frontend/src/icons/wind.png'
 const App = () => {
   const [weatherData, setWeatherData] = useState({
     city: '',
@@ -56,9 +58,26 @@ const App = () => {
     }
   }, [cityName]);
 
-  function getWeatherMessage(city, temperature, humidity, wind, forecast) {
-  
+  function getWeatherImg(temperature, humidity, wind, forecast){
+    if (temperature.current < 50) {
+      return <img id='icon' src={cloudy}/>
+    } else if (temperature.current < 30) {
+      return <img src={cloudy} id='icon'/>
+    } else if (forecast.includes('rain')) {
+      return <img src={rain} id='icon'/>
+    } else if (temperature.current > 80 && humidity > 60) {
+      return <img src={sunny} id='icon'/>
+    } else if (wind.speed > 15) {
+      return <img src={Wind} id='icon'/>
+    } else if (temperature.current > 90) {
+      return <img src={sunny} id='icon'/>
+    } else if (temperature.current > 75 && forecast.includes('thunderstorms')) {
+      return <img src={rain} id='icon'/>
+    } else {
+      return <img src={sunny} id='icon'/>
+    }
   }
+
   function getWeatherMessage(city, temperature, humidity, wind, forecast) {
     if (temperature.current < 50) {
       return `Looks like it's chilly in ${city} today! Don't forget to bring a jacket.`;
@@ -86,30 +105,50 @@ const App = () => {
     event.preventDefault();
   };
 
-  const handleCitySelect = (event) => {
-    setCityName(event.target.value);
-  };
-
   return (
-    <div className="weather-container">
-      <h1>{weatherData.city}, {weatherData.state}</h1>
-      <p>{weatherData.temperature.current}°F or {Math.round((weatherData.temperature.current - 32) * 5/9)}°C</p>
-      <p>{weatherData.forecast}</p>
-      
-    <p>Humidity: {weatherData.humidity}%</p>
-      <p>Wind Speed: {weatherData.wind.speed} mph</p>
-      <p>{getWeatherMessage(weatherData.city, weatherData.temperature, weatherData.humidity, weatherData.wind, weatherData.forecast)}</p>
-      <form onSubmit={handleSubmit}>
-        <label>
-          City:
-          <input type="text" value={cityName} onChange={handleCityChange} />
-        </label>
-        <label>
-  State/Country:
-  <input type="text" value={weatherData.state} onChange={(event) => setWeatherData({...weatherData, state: event.target.value})} />
-</label>
+    <div className="flex flex-col max-w-xl p-6 bg-azul border border-blue rounded-xl">
+
+    
+      <form onSubmit={handleSubmit} className='flex w-full justify-center'>
+          <input 
+          type="text"
+          value={cityName}
+          onChange={handleCityChange}
+          placeholder='Search for cities'
+          className='rounded-md w-3/5 h-8'
+          />
       </form>
-      <label>
+
+      <div className='flex h-full'>
+        <div className='flex flex-col w-full'>
+          <h1 className='flex text-2xl italic '>{weatherData.city}, {weatherData.state}</h1>
+          <p className='flex'>{weatherData.forecast}</p>
+          <p className='flex h-full items-center text-4xl font-bold'>{weatherData.temperature.current}°F/{Math.round((weatherData.temperature.current - 32) * 5/9)}°C</p>
+        </div>
+        
+        
+        <div className='flex justify-center flex-wrap'>
+          {getWeatherImg(weatherData.temperature, weatherData.humidity, weatherData.wind, weatherData.forecast)}
+          <p>{getWeatherMessage(weatherData.city, weatherData.temperature, weatherData.humidity, weatherData.wind, weatherData.forecast)}</p>
+        </div>
+      </div>
+
+      <div className='flex justify-around items-end'>
+        <div className='flex flex-col h-fit'>
+        <h4>Humidity</h4>
+        <p>{weatherData.humidity}%</p>
+        </div>
+        <div className='flex flex-col h-fit'>
+          <h4>Wind speed</h4>
+          <p>{weatherData.wind.speed} mph</p>
+        </div>
+        
+        
+      </div>
+      
+      
+      
+      {/* <label>
         Suggested Cities:
         <select value={cityName} onChange={handleCitySelect}>
           <option value="">--Select a city--</option>
@@ -117,7 +156,9 @@ const App = () => {
             <option key={city} value={city}>{city}</option>
           ))}
         </select>
-      </label>
+      </label> */}
+
+
     </div>
   );
   
