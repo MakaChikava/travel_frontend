@@ -12,13 +12,13 @@ const PackingList = () => {
     });
   };
 
-  const deleteItem = (id) => {
-    axios.delete(`https://climate-change.onrender.com/location/${id}`).then(()=> {
-      axios.get('https://climate-change.onrender.com/location').then((response) => {
-        setLists(response.data);
-      });
-    });
-  };
+  function shortCategory (category){
+    let newString = ''
+    let words = category.split(' ');
+    newString = words[0]
+    return <h2 className='text-md font-bold'>{newString}</h2>
+
+  }
 
   useEffect(()=> {
     allPackingItems();
@@ -26,17 +26,21 @@ const PackingList = () => {
 
   return (
     <div className="flex flex-col max-w-xl p-6 bg-blue border border-darkBlue rounded-xl">
-    <h2>Packing List</h2>
-      {lists.map((list) => {
-        return (
-          <div>
-            <h3>{list.category}</h3>
-            <p>{list.top}</p>
-            <p>{list.bottoms}</p>
-            <p>{list.shoes}</p>
-            <p>{list.headgear}</p>
-            <p>{list.accessories}</p>
-          </div>
+
+      <h1 className='text-xl font-bold'>Packing suggestions</h1>
+<br/>
+        {lists.map((list) => {
+          return (
+            <div>
+              {shortCategory(list.category)}
+              <ul>
+                <li>{list.top}</li>
+                <li>{list.bottoms}</li>
+                <li>{list.shoes}</li>
+                <li>{list.headgear}</li>
+                <br/>
+              </ul>
+            </div>
         )
       })}
         </div>
