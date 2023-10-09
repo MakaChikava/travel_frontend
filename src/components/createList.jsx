@@ -92,6 +92,7 @@ useEffect(()=>{
 
 
 return(
+    <div className="flex flex-col max-w-xl p-6 bg-blue border border-darkBlue rounded-xl">
     <main>
     <h1>Create List</h1>
     <section>
@@ -105,30 +106,37 @@ return(
     <section>
     <h2>Your Packing List </h2>
     <ul>
-        {
-            list.map((list)=>{
+        {list.map((list)=>{
                 return (
                     <li>
-                <span onClick={(event) => {
-                    handleToggleComplete(list)
-                }}>
-                    {
-                        (list.complete)?
-                            <strike>{list.description}</strike>
-                        :
-                            list.description
-                    }
-                    <button onClick={(event)=> {
-                        handleDelete(list)
-                    }}>delete</button>
+                        
+                        <span>
+                            {(list.complete) ?
+                            <input type="checkbox" 
+                            checked 
+                            onClick={()=>{
+                                handleToggleComplete(list)
+                            }}/> 
+                            : <input className='rounded'
+                            type="checkbox" 
+                            onClick={()=>{
+                            handleToggleComplete(list)
+                            }}/>}
 
-                </span>
+                        {(list.complete) ? 
+                        <strike>{list.description}</strike> 
+                        : list.description}
 
-                <input type="text" onKeyUp={handleNewUpdate}/><br/>
-                <button onClick={(e)=>{
+                        <button onClick={(event)=> {
+                            handleDelete(list)
+                        }}>delete</button>
+                        </span>
+
+                {/* Update if needed */}
+                {/* <input type="text" onKeyUp={handleNewUpdate}/><br/> */}
+                {/* <button onClick={(e)=>{
                     updateListItem(list)
-                    }}>submit</button>
-
+                    }}>submit</button> */}
                 </li>
                 )
             })
@@ -136,7 +144,10 @@ return(
     </ul>
 </section>
 
+
+
     </main>
+</div>
     )
 }
 export default CreateList;
