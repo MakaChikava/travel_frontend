@@ -28,14 +28,16 @@ const Forecast = () => {
   };
 
   return (
-    <div>
+    <div className="flex max-w-xl p-6 bg-blue border border-blue rounded-xl">
         
       <form onSubmit={handleSearch}>
         <label htmlFor="city">City:</label>
         <input type="text" id="city" />
         <button type="submit">Search</button>
       </form>
+
       <h2>3-Day Forecast</h2>
+
       <table>
         <thead>
           <tr>
@@ -44,6 +46,7 @@ const Forecast = () => {
             <th>Forecast</th>
           </tr>
         </thead>
+
         <tbody>
           {forecastData.map((forecast, index) => (
             <tr key={index}>
@@ -53,7 +56,9 @@ const Forecast = () => {
             </tr>
           ))}
         </tbody>
+
       </table>
+
     </div>
   );
 };
