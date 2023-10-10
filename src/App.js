@@ -56,10 +56,10 @@ const [cityName, setCityName] = React.useState('');
   
   
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   handleSearch()
-  // }, [cityName]);
+    handleSearch()
+  }, [cityName]);
 
   function getWeatherImg(temperature, humidity, wind, forecast){
     if (temperature.current < 50) {
@@ -125,15 +125,16 @@ const [cityName, setCityName] = React.useState('');
     <div className="flex flex-col max-w-xl p-6 bg-azul border border-blue rounded-xl">
 
     
-
-    <input 
+<div className='flex justify-center'>
+  <input 
     type="text"
     value={cityName}
     onChange={handleCityChange}
     placeholder='Search for cities'
     className='rounded-md w-3/5 h-8 flex justify-center'
     />
-    <button onClick={handleSearch}>search</button>
+</div>
+    
 
 
 <div className='flex h-full'>
@@ -152,11 +153,11 @@ const [cityName, setCityName] = React.useState('');
 
 <div className='flex justify-around items-end'>
   <div className='flex flex-col h-fit'>
-  <h4>Humidity</h4>
+  <h4 className='font-bold'>Humidity</h4>
   <p>{weatherData.humidity}%</p>
   </div>
   <div className='flex flex-col h-fit'>
-    <h4>Wind speed</h4>
+    <h4 className='font-bold'>Wind speed</h4>
     <p>{weatherData.wind.speed} mph</p>
   </div>
   
@@ -170,7 +171,7 @@ const [cityName, setCityName] = React.useState('');
 
 
 
-    <div className='flex justify-center h-48'>
+    <div className='flex justify-center h-full'>
       <Forecast cityName={cityName}/>
     </div>
   </div>
