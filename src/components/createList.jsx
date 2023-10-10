@@ -131,21 +131,21 @@ return(
 
 <br/>
 
-    <div className='flex w-full'>
-    <ul className='flex flex-col w-full'>
+    <div className='flex w-full h-full'>
+    <ul className='flex flex-col w-full h-full'>
     {list.map((list)=>{
         return (
         <li>
-            <span className='flex  w-full mb-4'>
+            <span className='flex  w-full mb-4 items-center'>
                 {(list.complete) ?
-                <input className='flex h-8 w-6 rounded-full ml-3'
+                <input className='flex h-8 w-6 ml-3 accent-green'
                         type="checkbox" 
-                        checked 
+                        checked='true' 
                         onClick={()=>{
                             handleToggleComplete(list)
                         }}/>
-                    : <input className='flex ml-3'
-                        type="checkbox" 
+                    : <input className='flex h-8 w-6 ml-3 accent-green'
+                        type="checkbox"
                         onClick={()=>{
                             handleToggleComplete(list)
                         }}/>}
@@ -153,9 +153,11 @@ return(
                 {(list.complete) ? 
                 <strike className='flex ml-3'>{list.description}</strike> 
                     : <p className='flex ml-3'>{list.description}</p>}
+                
                 <div className='flex w-full justify-end mr-3'>
+                    
                     <button
-                    className='bg-black hover:bg-black text-white text-xs font-bold py-1 px-2 rounded-full '
+                    className='bg-black hover:text-red hover:bg-black-50 text-white text-xs font-bold py-1 px-3 rounded-full '
                     onClick={()=> {
                         handleDelete(list)
                     }}>Delete</button>

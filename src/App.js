@@ -166,6 +166,7 @@ const [cityName, setCityName] = React.useState('');
 </div>
     </div>
 
+<br/>
 
     <div className='flex justify-center h-full'>
       <Forecast cityName={cityName}/>
