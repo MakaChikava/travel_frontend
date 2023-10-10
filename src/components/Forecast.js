@@ -3,30 +3,37 @@ import axios from 'axios';
 
 
 const Forecast = (props) => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = React.useState('');
   const [forecastData, setForecastData] = useState([]);
 
   const handleChange = (event) => {
+    event.preventDefault()
     setCity(event.target.value)
     console.log(city)
   }
+  
 
 const fetchForecastData = async () => {
       const weatherAPI = process.env.REACT_APP_WEATHER_API_KEY
+      
       try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${props.cityName}&units=imperial&appid=${weatherAPI}`);
+      setCity(props.cityName)
+      console.log(city)
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${weatherAPI}`);
         setForecastData(response.data.list.slice(3, 8)); // Only show the first 3 days of forecast
       } catch (error) {
         console.log(error);
       }
     };
 
-  useEffect(() => {
-    if(city){
-      fetchForecastData();
-    }
 
-  }, []);
+
+  useEffect(() => {
+
+      fetchForecastData();
+
+
+  }, [city]);
 
   return (
     <div className="flex max-w-xl p-6 bg-blue border border-blue rounded-xl">
@@ -37,7 +44,6 @@ const fetchForecastData = async () => {
         <button type="submit">Search</button>
       </form> */}
       {/* <h1>{props.cityName}</h1> */}
-      
       
 
       <h2>3-Day Forecast</h2>

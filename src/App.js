@@ -25,37 +25,41 @@ const App = () => {
     },
     forecast: ''
   });
+const [cityName, setCityName] = React.useState('');
 
-  const [cityName, setCityName] = useState('');
+  const handleSearch = () =>{
+    const weatherAPI = process.env.REACT_APP_WEATHER_API_KEY
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${weatherAPI}`)
+    .then(response => {
+      const data = response.data;
+      setWeatherData({
+        city: data.name,
+        state: data.sys.country,
+        temperature: {
+          current: Math.round(data.main.temp),
+          high: Math.round(data.main.temp_max),
+          low: Math.round(data.main.temp_min)
+        },
+        humidity: data.main.humidity,
+        wind: {
+          speed: Math.round(data.wind.speed),
+          direction: data.wind.deg
+        },
+        forecast: data.weather[0].description
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+  
   
 
-  useEffect(() => {
-    const weatherAPI = process.env.REACT_APP_WEATHER_API_KEY
-    if (cityName) {
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${weatherAPI}`)
-        .then(response => {
-          const data = response.data;
-          setWeatherData({
-            city: data.name,
-            state: data.sys.country,
-            temperature: {
-              current: Math.round(data.main.temp),
-              high: Math.round(data.main.temp_max),
-              low: Math.round(data.main.temp_min)
-            },
-            humidity: data.main.humidity,
-            wind: {
-              speed: Math.round(data.wind.speed),
-              direction: data.wind.deg
-            },
-            forecast: data.weather[0].description
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  }, [cityName]);
+  // useEffect(() => {
+    
+  //   handleSearch()
+  // }, [cityName]);
 
   function getWeatherImg(temperature, humidity, wind, forecast){
     if (temperature.current < 50) {
@@ -129,6 +133,7 @@ const App = () => {
     placeholder='Search for cities'
     className='rounded-md w-3/5 h-8 flex justify-center'
     />
+    <button onClick={handleSearch}>search</button>
 
 
 <div className='flex h-full'>
