@@ -57,7 +57,9 @@ const fetchForecastData =  () => {
       <br/>
       <br/>
       <div className='flex flex-row justify-center'>
-        <input className='flex w-40' value={props.cityName}/>
+        <input 
+        className='flex rounded-md w-3/5 h-8 px-4' 
+        value={props.cityName}/>
       <button onClick={fetchForecastData} className='flex ml-8'>search</button>
       </div>
       <br/>

@@ -131,7 +131,7 @@ const [cityName, setCityName] = React.useState('');
     value={cityName}
     onChange={handleCityChange}
     placeholder='Search for cities'
-    className='rounded-md w-3/5 h-8 flex justify-center'
+    className='rounded-md w-3/5 h-8 px-4 flex justify-center'
     />
 </div>
     

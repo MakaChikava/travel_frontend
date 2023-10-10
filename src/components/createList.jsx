@@ -28,10 +28,7 @@ const callListData = () =>{
                 setlist(response.data)
             })
 }
-// ================== REFRESH PAGE ============= //
-const refreshPage= ()=>{
-    window.location.reload(false)
-}
+
 // ============= SUBMITING INFO FROM INPUT FIELDS ============= //
 
 const handleNewListFormComplete = (e)=>{
@@ -93,61 +90,78 @@ useEffect(()=>{
 
 return(
     <div className="flex flex-col max-w-xl p-6 bg-blue border border-darkBlue rounded-xl">
-    <main>
-    <h1>Create List</h1>
-    <section>
-        <form onSubmit={handleNewListFormComplete}>
-            Item: <input type="text" onChange={handleNewList}/><br/>
-            Packed?: <input type= "checkbox" onChange={handleNewComplete}/><br/>
-            <input type="submit" value="Add To Suitcase"/>
-        </form>
-    </section>
-
-    <section>
-    <h2>Your Packing List </h2>
-    <ul>
-        {list.map((list)=>{
-                return (
-                    <li>
-                        
-                        <span>
-                            {(list.complete) ?
-                            <input type="checkbox" 
-                            checked 
-                            onClick={()=>{
-                                handleToggleComplete(list)
-                            }}/> 
-                            : <input className='rounded'
-                            type="checkbox" 
-                            onClick={()=>{
-                            handleToggleComplete(list)
-                            }}/>}
-
-                        {(list.complete) ? 
-                        <strike>{list.description}</strike> 
-                        : list.description}
-
-                        <button onClick={(event)=> {
-                            handleDelete(list)
-                        }}>delete</button>
-                        </span>
-
-                {/* Update if needed */}
-                {/* <input type="text" onKeyUp={handleNewUpdate}/><br/> */}
-                {/* <button onClick={(e)=>{
-                    updateListItem(list)
-                    }}>submit</button> */}
-                </li>
-                )
-            })
-        }
-    </ul>
-</section>
-
-
-
-    </main>
+    <div className='flex w-full justify-center'>
+        <h1 className='font-bold'>Create List</h1>
+    </div>
+    
+    
+<div className='flex'>
+    <div className='flex flex-row items-center'>
+        <input 
+        type="text" 
+        onChange={handleNewList}
+        className='flex rounded-xl px-4 h-8'
+        placeholder="add a new task"
+        />
+    
+    
+        <button
+        className='flex items-center w-full h-8 px-2 pb-2 mt-2 text-sm font-medium rounded'
+        onClick={handleNewListFormComplete}
+        >
+            <svg 
+            class="w-5 h-5 text-gray-400 fill-current" 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+            >
+                <path 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+			</svg>
+        </button>
+    </div>
 </div>
+
+    
+
+<br/>
+
+    <div className='flex flex-col justify-center'>
+    <ul>
+    {list.map((list)=>{
+        return (
+        <li>
+            <span>
+                {(list.complete) ?
+                <input type="checkbox" 
+                        checked 
+                        onClick={()=>{
+                            handleToggleComplete(list)
+                        }}/>
+                    : <input className='rounded'
+                        type="checkbox" 
+                        onClick={()=>{
+                            handleToggleComplete(list)
+                        }}/>}
+
+                {(list.complete) ? 
+                <strike>{list.description}</strike> 
+                    : list.description}
+                    <button onClick={()=> {
+                        handleDelete(list)
+                    }}>delete</button>
+            </span>
+        </li>
+    )})}
+    </ul>
+    </div>
+    
+    </div>
     )
 }
 export default CreateList;
