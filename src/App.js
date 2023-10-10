@@ -122,7 +122,7 @@ const [cityName, setCityName] = React.useState('');
 
   <div className='flex flex-col'>
     <div className='flex justify-center h-96'>
-    <div className="flex flex-col max-w-xl p-6 bg-azul border border-blue rounded-xl">
+    <div className="flex flex-col max-w-xl p-6 bg-azul border border-blue border-4 rounded-xl">
 
     
 <div className='flex justify-center'>

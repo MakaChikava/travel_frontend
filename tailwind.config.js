@@ -10,6 +10,7 @@ module.exports = {
       'azul': '#f0f9ff',
       'black': '#0a0a0a',
       'black-50': '#262626',
+      'lightBlack': '#525252',
       'white': '#fafafa',
       'red': '#dc2626',
       'green': '#16a34a'

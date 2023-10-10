@@ -89,9 +89,9 @@ useEffect(()=>{
 
 
 return(
-    <div className="flex flex-col max-w-xl p-6 bg-blue border border-darkBlue rounded-xl">
+    <div className="flex flex-col max-w-xl p-6 bg-blue border border-azul border-8 rounded-xl">
     <div className='flex w-full justify-center'>
-        <h1 className='font-bold'>Create List</h1>
+        <h1 className='font-bold text-xl'> Suitcase</h1>
     </div>
     
     
@@ -101,7 +101,7 @@ return(
         type="text" 
         onChange={handleNewList}
         className='flex rounded-xl px-4 h-8'
-        placeholder="add a new task"
+        placeholder="add new item"
         />
     
     

@@ -25,9 +25,9 @@ const PackingList = () => {
   },[]);
 
   return (
-    <div className="flex flex-col max-w-xl p-6 bg-blue border border-darkBlue rounded-xl">
+    <div className="flex flex-col max-w-xl p-6 bg-blue border border-azul border-8 rounded-xl">
 
-      <h1 className='text-xl font-bold'>Packing suggestions</h1>
+      <h1 className='text-xl font-bold flex justify-center'>Packing suggestions</h1>
 <br/>
         {lists.map((list) => {
           return (
