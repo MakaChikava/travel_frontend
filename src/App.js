@@ -106,13 +106,14 @@ const [cityName, setCityName] = React.useState('');
 
 
   return (
-<>
-  <div className="flex justify-center">
-    <h1 className='flex text-lg font-bold'>CliMate Change</h1>
+<div className='flex flex-col h-screen w-screen '>
+  <div className="flex justify-center items-center mb-4 mt-2 text-5xl font-extrabold">
+    <span id='title' >
+      CliMate Change
+    </span>
   </div>
 
   <div className='flex flex-row justify-around'>
-
   <div className='flex'>
     {/* <button onClick={toggleList}>{showList ? 'Hide Packing List Suggestions' : 'Show Packing List Suggestions'}</button> */}
         { <PackingList/>}
@@ -178,7 +179,7 @@ const [cityName, setCityName] = React.useState('');
   </div>
 
     </div>
-</>
+</div>
   );
 };
 

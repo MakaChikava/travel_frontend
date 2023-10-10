@@ -6,3 +6,11 @@
   height: 130px;
   width: 130px;
 }
+
+#title{
+  background-image: url('/Users/maka/personal_projects/travel_frontend/src/icons/niceClouds.jpeg');
+  background-size:contain;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
