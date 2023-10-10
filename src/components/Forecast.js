@@ -20,7 +20,7 @@ const fetchForecastData = async () => {
       setCity(props.cityName)
       console.log(city)
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${weatherAPI}`);
-        setForecastData(response.data.list.slice(3, 8)); // Only show the first 3 days of forecast
+        setForecastData(response.data.list.slice(0, 6)); // Only show the first 3 days of forecast
       } catch (error) {
         console.log(error);
       }
@@ -29,11 +29,20 @@ const fetchForecastData = async () => {
 
 
   useEffect(() => {
-
       fetchForecastData();
 
-
   }, [city]);
+
+  function formatForecastTime (time){
+    const dateString = time
+    const date = new Date(dateString);
+    const timeOptions = { hour: 'numeric' };
+    const formatTime = date.toLocaleTimeString(undefined, timeOptions)
+    return formatTime
+  }
+
+
+
 
   return (
     <div className="flex max-w-xl p-6 bg-blue border border-blue rounded-xl">
@@ -45,24 +54,22 @@ const fetchForecastData = async () => {
       </form> */}
       {/* <h1>{props.cityName}</h1> */}
       
-
       <h2>3-Day Forecast</h2>
+
 
       <table>
         <thead>
+          {forecastData.map((forecast, index) => (
           <tr>
-            <th>Date</th>
-            <th>Temperature (°F)</th>
-            <th>Forecast</th>
+            <th>{formatForecastTime(forecast.dt_txt)}</th>
           </tr>
+          ))}
         </thead>
 
         <tbody>
-          {forecastData.map((forecast, index) => (
+        {forecastData.map((forecast, index) => (
             <tr key={index}>
-              <td>{forecast.dt_txt}</td>
               <td>{Math.round(forecast.main.temp)}</td>
-              <td>{forecast.weather[0].description}</td>
             </tr>
           ))}
         </tbody>
