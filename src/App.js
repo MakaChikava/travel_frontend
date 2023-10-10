@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import cloudy from '/Users/maka/personal_projects/travel_frontend/src/icons/cloudy.png'
-import rain from '/Users/maka/personal_projects/travel_frontend/src/icons/rain.png'
-import sunny from '/Users/maka/personal_projects/travel_frontend/src/icons/sunny.png'
-import Wind from '/Users/maka/personal_projects/travel_frontend/src/icons/wind.png'
+import cloudy from './icons/cloudy.png'
+import rain from './icons/rain.png'
+import sunny from './icons/sunny.png'
+import Wind from './icons/wind.png'
 import PackingList from './components/PackingList';
 import Forecast from './components/Forecast';
 import CreateList from './components/createList';

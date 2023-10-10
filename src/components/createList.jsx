@@ -8,16 +8,11 @@ const CreateList = () => {
 const [newDescription, setNewDescription] = useState('');
 const [newComplete, setNewComplete] = useState(false)
 const [list, setlist] = useState([]);
-const [updateList, setUpdateList] = useState('')
 
 
 const handleNewList = (event) => {
     setNewDescription(event.target.value);
     }
-
-const handleNewComplete = (event) => {
-    setNewComplete(event.target.checked);
-}
 
 //  ==================== CALL LIST DATA ===============  //
 
@@ -65,23 +60,7 @@ const handleToggleComplete = (listData) => {
     callListData()
     })
 }
-//  ========================== UPDATE LIST ITEM WITH INPUT FIELD ====================== //
 
-const handleNewUpdate = (e) =>{
-    setUpdateList(e.target.value);
-    console.log(e.target.value)
-}
-
-const updateListItem = (listData) => {
-axios
-    .put(`https://climate-change.onrender.com/list/${listData._id}`,
-    {
-        description: updateList
-    })
-    .then(()=>{
-        callListData()
-    })
-}
 
 useEffect(()=>{
     callListData()
