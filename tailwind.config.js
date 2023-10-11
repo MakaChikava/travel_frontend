@@ -16,11 +16,7 @@ module.exports = {
       'green': '#16a34a',
       'indigo': '#f1f5f9'
     },
-    extend: {
-      backgroundImage:{
-        'clouds': "url('/Users/maka/personal_projects/travel_frontend/src/icons/whiteCloudsBG.avif')"
-      }
-    },
+    extend: {},
   },
   plugins: [],
 }

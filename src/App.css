@@ -8,7 +8,7 @@
 }
 
 #title{
-  background-image: url('/Users/maka/personal_projects/travel_frontend/src/icons/niceClouds.jpeg');
+  background-image: url('./icons/niceClouds.jpeg');
   background-size:contain;
   background-clip: text;
   -webkit-background-clip: text;
