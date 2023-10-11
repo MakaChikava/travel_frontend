@@ -19,7 +19,7 @@ User should be able to delete packing list items
 
 ## Live Link
 
-Live demo [here](https://climate-change-frontend.onrender.com/)
+Live demo [here](https://climatechange-navy.vercel.app/)
 
 Wireframes: https://docs.google.com/document/d/11P4VAcwhNa4V9YT-Er3yXUbUi24RWqhlKrYJyYkk_MM/edit?usp=sharing
 
