@@ -1,6 +1,6 @@
 # CliMate Change
 
-This web app is a tool for travelers designed to help with the packing process when planning a trip. This app allows you to select a city, view the current weather there and provides a CRUD (Create, Read, Update, Delete) packing list. When using the search weather feature, the app will provide numerical as well as text information about the weather and will display a suggested packing list.
+This web app is a tool for travelers designed to help with the packing process when planning a trip. This app allows you to select a city, view the current weather there and provides a CRUD packing list. When using the search weather feature, the app will provide numerical as well as text information about the weather and will display a suggested packing list.
 
 ---
 
@@ -19,7 +19,7 @@ User should be able to delete packing list items
 
 ## Live Link
 
-Live demo [here]((https://climate-change-frontend.onrender.com/))
+Live demo [here](https://climate-change-frontend.onrender.com/)
 
 Wireframes: https://docs.google.com/document/d/11P4VAcwhNa4V9YT-Er3yXUbUi24RWqhlKrYJyYkk_MM/edit?usp=sharing
 
